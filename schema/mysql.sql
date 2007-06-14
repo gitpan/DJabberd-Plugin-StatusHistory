@@ -1,0 +1,14 @@
+CREATE TABLE jidmap (
+    jidid INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    jid   VARCHAR(255) NOT NULL,
+    INDEX (jid)
+);
+
+CREATE TABLE history (
+    jidid  INTEGER NOT NULL REFERENCES jidmap,
+    time   TIMESTAMP NOT NULL DEFAULT NOW(),
+    status VARCHAR(255) NOT NULL,
+    avail  VARCHAR(10)  NOT NULL DEFAULT '',
+    source VARCHAR(255) NOT NULL,
+    INDEX (jidid, time)
+);
